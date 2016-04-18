@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AE452B861CC47D55003BF10D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE452B851CC47D55003BF10D /* AppDelegate.swift */; };
-		AE452B881CC47D55003BF10D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE452B871CC47D55003BF10D /* ViewController.swift */; };
-		AE452B8B1CC47D55003BF10D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE452B891CC47D55003BF10D /* Main.storyboard */; };
 		AE452B8D1CC47D55003BF10D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE452B8C1CC47D55003BF10D /* Assets.xcassets */; };
 		AE452B901CC47D55003BF10D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE452B8E1CC47D55003BF10D /* LaunchScreen.storyboard */; };
 		AE452B9B1CC47D55003BF10D /* IOSZooniverseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE452B9A1CC47D55003BF10D /* IOSZooniverseTests.swift */; };
 		AE452BA61CC47D55003BF10D /* IOSZooniverseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE452BA51CC47D55003BF10D /* IOSZooniverseUITests.swift */; };
+		AE452BB41CC47D98003BF10D /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE452BB31CC47D98003BF10D /* Project.swift */; };
+		AE452BB61CC47DA0003BF10D /* ProjectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE452BB51CC47DA0003BF10D /* ProjectListViewController.swift */; };
+		AE452BB81CC47DAE003BF10D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE452BB71CC47DAE003BF10D /* AppDelegate.swift */; };
+		AE452BBA1CC47E19003BF10D /* ProjectListViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE452BB91CC47E19003BF10D /* ProjectListViewControllerTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +36,6 @@
 
 /* Begin PBXFileReference section */
 		AE452B821CC47D55003BF10D /* IOSZooniverse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSZooniverse.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE452B851CC47D55003BF10D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AE452B871CC47D55003BF10D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		AE452B8A1CC47D55003BF10D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AE452B8C1CC47D55003BF10D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE452B8F1CC47D55003BF10D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE452B911CC47D55003BF10D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +45,10 @@
 		AE452BA11CC47D55003BF10D /* IOSZooniverseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSZooniverseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE452BA51CC47D55003BF10D /* IOSZooniverseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSZooniverseUITests.swift; sourceTree = "<group>"; };
 		AE452BA71CC47D55003BF10D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE452BB31CC47D98003BF10D /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Project.swift; path = "../../ios-zooniverse/ios-zooniverse/Project.swift"; sourceTree = "<group>"; };
+		AE452BB51CC47DA0003BF10D /* ProjectListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectListViewController.swift; path = "../../ios-zooniverse/ios-zooniverse/ProjectListViewController.swift"; sourceTree = "<group>"; };
+		AE452BB71CC47DAE003BF10D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "../../ios-zooniverse/ios-zooniverse/AppDelegate.swift"; sourceTree = "<group>"; };
+		AE452BB91CC47E19003BF10D /* ProjectListViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectListViewControllerTest.swift; path = "../../ios-zooniverse/ios-zooniverseTests/ProjectListViewControllerTest.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +99,9 @@
 		AE452B841CC47D55003BF10D /* IOSZooniverse */ = {
 			isa = PBXGroup;
 			children = (
-				AE452B851CC47D55003BF10D /* AppDelegate.swift */,
-				AE452B871CC47D55003BF10D /* ViewController.swift */,
-				AE452B891CC47D55003BF10D /* Main.storyboard */,
+				AE452BB71CC47DAE003BF10D /* AppDelegate.swift */,
+				AE452BB31CC47D98003BF10D /* Project.swift */,
+				AE452BB51CC47DA0003BF10D /* ProjectListViewController.swift */,
 				AE452B8C1CC47D55003BF10D /* Assets.xcassets */,
 				AE452B8E1CC47D55003BF10D /* LaunchScreen.storyboard */,
 				AE452B911CC47D55003BF10D /* Info.plist */,
@@ -110,6 +112,7 @@
 		AE452B991CC47D55003BF10D /* IOSZooniverseTests */ = {
 			isa = PBXGroup;
 			children = (
+				AE452BB91CC47E19003BF10D /* ProjectListViewControllerTest.swift */,
 				AE452B9A1CC47D55003BF10D /* IOSZooniverseTests.swift */,
 				AE452B9C1CC47D55003BF10D /* Info.plist */,
 			);
@@ -231,7 +234,6 @@
 			files = (
 				AE452B901CC47D55003BF10D /* LaunchScreen.storyboard in Resources */,
 				AE452B8D1CC47D55003BF10D /* Assets.xcassets in Resources */,
-				AE452B8B1CC47D55003BF10D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,8 +258,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE452B881CC47D55003BF10D /* ViewController.swift in Sources */,
-				AE452B861CC47D55003BF10D /* AppDelegate.swift in Sources */,
+				AE452BB81CC47DAE003BF10D /* AppDelegate.swift in Sources */,
+				AE452BB61CC47DA0003BF10D /* ProjectListViewController.swift in Sources */,
+				AE452BB41CC47D98003BF10D /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE452BBA1CC47E19003BF10D /* ProjectListViewControllerTest.swift in Sources */,
 				AE452B9B1CC47D55003BF10D /* IOSZooniverseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,14 +297,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		AE452B891CC47D55003BF10D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AE452B8A1CC47D55003BF10D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AE452B8E1CC47D55003BF10D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -399,10 +395,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = IOSZooniverse/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ChelseaTroy.IOSZooniverse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -410,6 +408,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = IOSZooniverse/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ChelseaTroy.IOSZooniverse;
