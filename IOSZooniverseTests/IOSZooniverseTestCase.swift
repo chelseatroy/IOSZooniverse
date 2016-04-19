@@ -1,19 +1,13 @@
-//
-//  IOSZooniverseTests.swift
-//  IOSZooniverseTests
-//
-//  Created by Pivotal on 2016-04-17.
-//  Copyright © 2016 ChelseaTroy. All rights reserved.
-//
-
 import XCTest
+
 @testable import IOSZooniverse
 
-class IOSZooniverseTests: XCTestCase {
+class IOSZooniverseTestCase: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        UIView.setAnimationsEnabled(false)
     }
     
     override func tearDown() {
