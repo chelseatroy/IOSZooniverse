@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE1EFDE51CC66305002175E5 /* ProjectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1EFDE41CC66305002175E5 /* ProjectListViewController.swift */; };
+		AE1EFDE71CC66315002175E5 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1EFDE61CC66315002175E5 /* Project.swift */; };
+		AE1EFDE91CC66338002175E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1EFDE81CC66338002175E5 /* AppDelegate.swift */; };
+		AE1EFDEB1CC6634E002175E5 /* ProjectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1EFDEA1CC6634E002175E5 /* ProjectListViewController.swift */; };
 		AE452B8D1CC47D55003BF10D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE452B8C1CC47D55003BF10D /* Assets.xcassets */; };
 		AE452B901CC47D55003BF10D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE452B8E1CC47D55003BF10D /* LaunchScreen.storyboard */; };
 		AE452B9B1CC47D55003BF10D /* IOSZooniverseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE452B9A1CC47D55003BF10D /* IOSZooniverseTests.swift */; };
 		AE452BA61CC47D55003BF10D /* IOSZooniverseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE452BA51CC47D55003BF10D /* IOSZooniverseUITests.swift */; };
-		AE452BB41CC47D98003BF10D /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE452BB31CC47D98003BF10D /* Project.swift */; };
-		AE452BB61CC47DA0003BF10D /* ProjectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE452BB51CC47DA0003BF10D /* ProjectListViewController.swift */; };
-		AE452BB81CC47DAE003BF10D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE452BB71CC47DAE003BF10D /* AppDelegate.swift */; };
-		AE452BBA1CC47E19003BF10D /* ProjectListViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE452BB91CC47E19003BF10D /* ProjectListViewControllerTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +35,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AE1EFDE41CC66305002175E5 /* ProjectListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListViewController.swift; sourceTree = "<group>"; };
+		AE1EFDE61CC66315002175E5 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		AE1EFDE81CC66338002175E5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AE1EFDEA1CC6634E002175E5 /* ProjectListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListViewController.swift; sourceTree = "<group>"; };
 		AE452B821CC47D55003BF10D /* IOSZooniverse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSZooniverse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE452B8C1CC47D55003BF10D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE452B8F1CC47D55003BF10D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -45,10 +49,6 @@
 		AE452BA11CC47D55003BF10D /* IOSZooniverseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSZooniverseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE452BA51CC47D55003BF10D /* IOSZooniverseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSZooniverseUITests.swift; sourceTree = "<group>"; };
 		AE452BA71CC47D55003BF10D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AE452BB31CC47D98003BF10D /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Project.swift; path = "../../ios-zooniverse/ios-zooniverse/Project.swift"; sourceTree = "<group>"; };
-		AE452BB51CC47DA0003BF10D /* ProjectListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectListViewController.swift; path = "../../ios-zooniverse/ios-zooniverse/ProjectListViewController.swift"; sourceTree = "<group>"; };
-		AE452BB71CC47DAE003BF10D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "../../ios-zooniverse/ios-zooniverse/AppDelegate.swift"; sourceTree = "<group>"; };
-		AE452BB91CC47E19003BF10D /* ProjectListViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectListViewControllerTest.swift; path = "../../ios-zooniverse/ios-zooniverseTests/ProjectListViewControllerTest.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +99,12 @@
 		AE452B841CC47D55003BF10D /* IOSZooniverse */ = {
 			isa = PBXGroup;
 			children = (
-				AE452BB71CC47DAE003BF10D /* AppDelegate.swift */,
-				AE452BB31CC47D98003BF10D /* Project.swift */,
-				AE452BB51CC47DA0003BF10D /* ProjectListViewController.swift */,
 				AE452B8C1CC47D55003BF10D /* Assets.xcassets */,
 				AE452B8E1CC47D55003BF10D /* LaunchScreen.storyboard */,
 				AE452B911CC47D55003BF10D /* Info.plist */,
+				AE1EFDE41CC66305002175E5 /* ProjectListViewController.swift */,
+				AE1EFDE61CC66315002175E5 /* Project.swift */,
+				AE1EFDE81CC66338002175E5 /* AppDelegate.swift */,
 			);
 			path = IOSZooniverse;
 			sourceTree = "<group>";
@@ -112,9 +112,9 @@
 		AE452B991CC47D55003BF10D /* IOSZooniverseTests */ = {
 			isa = PBXGroup;
 			children = (
-				AE452BB91CC47E19003BF10D /* ProjectListViewControllerTest.swift */,
 				AE452B9A1CC47D55003BF10D /* IOSZooniverseTests.swift */,
 				AE452B9C1CC47D55003BF10D /* Info.plist */,
+				AE1EFDEA1CC6634E002175E5 /* ProjectListViewController.swift */,
 			);
 			path = IOSZooniverseTests;
 			sourceTree = "<group>";
@@ -258,9 +258,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE452BB81CC47DAE003BF10D /* AppDelegate.swift in Sources */,
-				AE452BB61CC47DA0003BF10D /* ProjectListViewController.swift in Sources */,
-				AE452BB41CC47D98003BF10D /* Project.swift in Sources */,
+				AE1EFDE91CC66338002175E5 /* AppDelegate.swift in Sources */,
+				AE1EFDE51CC66305002175E5 /* ProjectListViewController.swift in Sources */,
+				AE1EFDE71CC66315002175E5 /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE452BBA1CC47E19003BF10D /* ProjectListViewControllerTest.swift in Sources */,
+				AE1EFDEB1CC6634E002175E5 /* ProjectListViewController.swift in Sources */,
 				AE452B9B1CC47D55003BF10D /* IOSZooniverseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -481,6 +481,7 @@
 				AE452BAC1CC47D55003BF10D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AE452BAD1CC47D55003BF10D /* Build configuration list for PBXNativeTarget "IOSZooniverseTests" */ = {
 			isa = XCConfigurationList;
@@ -489,6 +490,7 @@
 				AE452BAF1CC47D55003BF10D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AE452BB01CC47D55003BF10D /* Build configuration list for PBXNativeTarget "IOSZooniverseUITests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +499,7 @@
 				AE452BB21CC47D55003BF10D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
