@@ -48,11 +48,12 @@ class ProjectListViewController: UIViewController, UITableViewDelegate, UITableV
         self.indicator.startAnimating()
         self.indicator.backgroundColor = UIColor.whiteColor()
         
-        let url:NSURL = NSURL(string: "http://localhost:8080/projects")!
+        let url:NSURL = NSURL(string: "https://panoptes-staging.zooniverse.org/api/projects")!
         let session = NSURLSession.sharedSession()
         
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "GET"
+        request.addValue("application/vnd.api+json; version=1", forHTTPHeaderField: "Accept")
         
         //this is how you would add query params or request body to your request
         //let paramString = "data=Hello"
