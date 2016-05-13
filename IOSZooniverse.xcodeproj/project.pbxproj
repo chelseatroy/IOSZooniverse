@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		99994940B452388FBD1B9A90 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9999438887F3D70D2C261BE2 /* ApiClient.swift */; };
 		AE1EFDE51CC66305002175E5 /* ProjectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1EFDE41CC66305002175E5 /* ProjectListViewController.swift */; };
 		AE1EFDE71CC66315002175E5 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1EFDE61CC66315002175E5 /* Project.swift */; };
 		AE1EFDE91CC66338002175E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1EFDE81CC66338002175E5 /* AppDelegate.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9999438887F3D70D2C261BE2 /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		AE1EFDE41CC66305002175E5 /* ProjectListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListViewController.swift; sourceTree = "<group>"; };
 		AE1EFDE61CC66315002175E5 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		AE1EFDE81CC66338002175E5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				AE1EFDE41CC66305002175E5 /* ProjectListViewController.swift */,
 				AE1EFDE61CC66315002175E5 /* Project.swift */,
 				AE1EFDE81CC66338002175E5 /* AppDelegate.swift */,
+				9999438887F3D70D2C261BE2 /* ApiClient.swift */,
 			);
 			path = IOSZooniverse;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				AE1EFDE91CC66338002175E5 /* AppDelegate.swift in Sources */,
 				AE1EFDE51CC66305002175E5 /* ProjectListViewController.swift in Sources */,
 				AE1EFDE71CC66315002175E5 /* Project.swift in Sources */,
+				99994940B452388FBD1B9A90 /* ApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

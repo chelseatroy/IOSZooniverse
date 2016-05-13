@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         let window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window = window
-        window.rootViewController = ProjectListViewController()
+        window.rootViewController = ProjectListViewController(apiClient: ApiClient())
         window.makeKeyAndVisible()
         
         return true

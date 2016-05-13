@@ -4,36 +4,47 @@ class ProjectListViewController: UIViewController, UITableViewDelegate, UITableV
     var activityIndicatorView: UIActivityIndicatorView = UIActivityIndicatorView()
     var objects = NSMutableArray()
     var indicator = UIActivityIndicatorView()
-    
-    var tableView: UITableView  =   UITableView()
-    
+
+    var tableView: UITableView = UITableView()
+    var apiClient: ApiClient!
+
+    convenience init(apiClient: ApiClient ) {
+        self.init()
+
+        self.apiClient = apiClient
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.frame         =   CGRect.zero;
-        tableView.delegate      =   self
-        tableView.dataSource    =   self
+
+        tableView.frame = CGRect.zero;
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.separatorStyle = .None
         self.view.addSubview(tableView)
-        
+
         tableView.translatesAutoresizingMaskIntoConstraints = false
         let viewsDictionary = ["table": tableView]
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "H:|-0-[table]-0-|", options: [], metrics: nil, views: viewsDictionary))
+        "H:|-0-[table]-0-|", options: [], metrics: nil, views: viewsDictionary))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:|-0-[table]-0-|", options: [], metrics: nil, views: viewsDictionary))
-        
+        "V:|-0-[table]-0-|", options: [], metrics: nil, views: viewsDictionary))
+
         self.indicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 40, 40))
         self.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
-        self.indicator.center                     = self.view.center
+        self.indicator.center = self.view.center
         self.view.addSubview(indicator)
-        
-        data_request()
-        
+        self.indicator.startAnimating()
+
+        let nc = NSNotificationCenter.defaultCenter()
+        nc.addObserver(self, selector: #selector(ProjectListViewController.displayProjects), name: "didFetchProjects", object: nil)
+
+        apiClient.getProjects()
+
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
-        
+
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
         self.navigationItem.rightBarButtonItem = addButton
         if let split = self.splitViewController {
@@ -41,84 +52,51 @@ class ProjectListViewController: UIViewController, UITableViewDelegate, UITableV
             //self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
         }
     }
-    
-    
-    //This method makes the http request
-    func data_request() {
-        self.indicator.startAnimating()
-        self.indicator.backgroundColor = UIColor.whiteColor()
-        
-        let url:NSURL = NSURL(string: "https://panoptes-staging.zooniverse.org/api/projects")!
-        let session = NSURLSession.sharedSession()
-        
-        let request = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "GET"
-        request.addValue("application/vnd.api+json; version=1", forHTTPHeaderField: "Accept")
-        
-        //this is how you would add query params or request body to your request
-        //let paramString = "data=Hello"
-        //request.HTTPBody = paramString.dataUsingEncoding(NSUTF8StringEncoding)
-        
-        
-        let task = session.dataTaskWithRequest(request) {
-            (let data, let response, let error) in
-            
-            NSOperationQueue.mainQueue().addOperationWithBlock {
-                self.indicator.stopAnimating()
-                self.indicator.hidesWhenStopped = true
-                //stringified json in the response. You could print this to see it all as a string.
-                //let dataString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                
-                if let json: NSDictionary = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary {
-                    if let items = json["projects"] as? NSArray {
-                        
-                        for item in items {
-                            // construct your model objects here
-                            print(item["description"])
-                            let project = Project(json: item as! NSDictionary)
-                            
-                            //self.objects.addObject(project)
-                            
-                            self.insertNewObject(project)
-                        }
-                    }
+
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+
+    func displayProjects(notification: NSNotification) {
+        print("this is called")
+        NSOperationQueue.mainQueue().addOperationWithBlock {
+            self.indicator.stopAnimating()
+            self.indicator.hidesWhenStopped = true
+
+            if let projects = notification.object as? [Project] {
+                for project in projects {
+                    self.insertNewObject(project)
                 }
             }
-            
         }
-        
-        task.resume()
+
     }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func insertNewObject(sender: AnyObject) {
-        objects.insertObject(sender, atIndex: 0)
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-    }
-    
-    // MARK: - Table View
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
-        
-        let object = objects[indexPath.row] as! Project
-        cell.textLabel!.text = object.title
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("You selected cell #\(indexPath.row)!")
-    }
+
+
+func insertNewObject(sender: AnyObject) {
+    objects.insertObject(sender, atIndex: 0)
+    let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+    self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+}
+
+// MARK: - Table View
+
+func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return objects.count
+}
+
+func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+
+    let object = objects[indexPath.row] as! Project
+    cell.textLabel!.text = object.title
+    return cell
+}
+
+func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    print("You selected cell #\(indexPath.row)!")
+}
+
 }
 
 
