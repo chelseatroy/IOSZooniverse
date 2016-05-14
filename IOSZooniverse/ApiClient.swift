@@ -36,8 +36,10 @@ class ApiClient {
             }
 
             let nc = NSNotificationCenter.defaultCenter()
+            print("is happen?")
             nc.postNotificationName("didFetchProjects", object: projects)
 
         }
+        task.resume()
     }
 }
