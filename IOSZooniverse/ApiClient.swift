@@ -26,7 +26,6 @@ class ApiClient {
                 if let items = json["projects"] as? NSArray {
 
                     for item in items {
-                        // construct your model objects here
                         print(item["description"])
                         let project = Project(json: item as! NSDictionary)
 
