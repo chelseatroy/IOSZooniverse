@@ -22,11 +22,12 @@ class ApiClient {
         let task = session.dataTaskWithRequest(request) {
             (let data, let response, let error) in
 
+            print(response)
+
             if let json: NSDictionary = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary {
                 if let items = json["projects"] as? NSArray {
 
                     for item in items {
-                        print(item["description"])
                         let project = Project(json: item as! NSDictionary)
 
                         projects.append(project)
@@ -35,7 +36,6 @@ class ApiClient {
             }
 
             let nc = NSNotificationCenter.defaultCenter()
-            print("is happen?")
             nc.postNotificationName("didFetchProjects", object: projects)
 
         }

@@ -8,7 +8,7 @@ class ProjectListViewController: UIViewController, UITableViewDelegate, UITableV
     var tableView: UITableView = UITableView()
     var apiClient: ApiClient!
 
-    convenience init(apiClient: ApiClient ) {
+    convenience init(apiClient: ApiClient) {
         self.init()
 
         self.apiClient = apiClient

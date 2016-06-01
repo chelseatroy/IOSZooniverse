@@ -8,7 +8,7 @@ class ProjectListViewControllerTest: IOSZooniverseTestCase {
     override func setUp() {
         super.setUp()
         
-        subject = ProjectListViewController()
+        subject = ProjectListViewController(apiClient: ApiClient())
         subject.view.layoutSubviews()
     }
     
