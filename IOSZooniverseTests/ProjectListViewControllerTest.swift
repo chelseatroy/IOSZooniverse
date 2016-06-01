@@ -13,7 +13,6 @@ class ProjectListViewControllerTest: IOSZooniverseTestCase {
     }
     
     func testSomething() {
-        XCTAssertEqual(1 ,1)
         XCTAssertEqual(subject.tableView.separatorStyle, UITableViewCellSeparatorStyle.None)
     }
 }
