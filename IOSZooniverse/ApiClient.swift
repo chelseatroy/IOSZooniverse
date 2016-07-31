@@ -7,7 +7,7 @@ import Foundation
 
 class ApiClient {
     func getProjects() {
-        let url: NSURL = NSURL(string: "https://panoptes-staging.zooniverse.org/api/projects")!
+        let url: NSURL = NSURL(string: "https://panoptes.zooniverse.org/api/projects")!
         let session = NSURLSession.sharedSession()
 
         let request = NSMutableURLRequest(URL: url)

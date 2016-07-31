@@ -2,40 +2,33 @@ import UIKit
 
 class ProjectListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var activityIndicatorView: UIActivityIndicatorView = UIActivityIndicatorView()
+    var projectListView: ProjectListView?
     var objects = NSMutableArray()
-    var indicator = UIActivityIndicatorView()
-
-    var tableView: UITableView = UITableView()
     var apiClient: ApiClient!
 
     convenience init(apiClient: ApiClient) {
-        self.init()
-
+        self.init(nibName: nil, bundle: nil)
         self.apiClient = apiClient
     }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override func loadView() {
+        self.projectListView = ProjectListView()
+        self.view = projectListView!.baseView
+        projectListView!.tableView.delegate = self
+        projectListView!.tableView.dataSource = self
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tableView.frame = CGRect.zero;
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        tableView.separatorStyle = .None
-        self.view.addSubview(tableView)
-
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        let viewsDictionary = ["table": tableView]
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-        "H:|-0-[table]-0-|", options: [], metrics: nil, views: viewsDictionary))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-        "V:|-0-[table]-0-|", options: [], metrics: nil, views: viewsDictionary))
-
-        self.indicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 40, 40))
-        self.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
-        self.indicator.center = self.view.center
-        self.view.addSubview(indicator)
-        self.indicator.startAnimating()
 
         let nc = NSNotificationCenter.defaultCenter()
         nc.addObserver(self, selector: #selector(ProjectListViewController.displayProjects), name: "didFetchProjects", object: nil)
@@ -56,10 +49,8 @@ class ProjectListViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func displayProjects(notification: NSNotification) {
-        print("this is called")
         NSOperationQueue.mainQueue().addOperationWithBlock {
-            self.indicator.stopAnimating()
-            self.indicator.hidesWhenStopped = true
+//            self.projectListView.stopAnimating()
 
             if let projects = notification.object as? [Project] {
                 for project in projects {
@@ -74,7 +65,7 @@ class ProjectListViewController: UIViewController, UITableViewDelegate, UITableV
 func insertNewObject(sender: AnyObject) {
     objects.insertObject(sender, atIndex: 0)
     let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-    self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+    projectListView!.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
 }
 
 // MARK: - Table View
@@ -84,7 +75,7 @@ func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> In
 }
 
 func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+    let cell = projectListView!.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
 
     let object = objects[indexPath.row] as! Project
     cell.textLabel!.text = object.title
