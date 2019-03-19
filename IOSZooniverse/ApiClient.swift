@@ -7,11 +7,11 @@ import Foundation
 
 class ApiClient {
     func getProjects() {
-        let url: NSURL = NSURL(string: "https://panoptes.zooniverse.org/api/projects")!
-        let session = NSURLSession.sharedSession()
+        let url: URL = URL(string: "https://panoptes.zooniverse.org/api/projects")!
+        let session = URLSession.shared
 
-        let request = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "GET"
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
         request.addValue("application/vnd.api+json; version=1", forHTTPHeaderField: "Accept")
 
         //this is how you would add query params or request body to your request
@@ -19,12 +19,10 @@ class ApiClient {
         //request.HTTPBody = paramString.dataUsingEncoding(NSUTF8StringEncoding)
         var projects = [Project]()
 
-        let task = session.dataTaskWithRequest(request) {
-            (let data, let response, let error) in
+        let task = session.dataTask(with: request, completionHandler: {
+            (data, response, error) in
 
-            print(response)
-
-            if let json: NSDictionary = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary {
+            if let json: NSDictionary = try! JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
                 if let items = json["projects"] as? NSArray {
 
                     for item in items {
@@ -35,10 +33,10 @@ class ApiClient {
                 }
             }
 
-            let nc = NSNotificationCenter.defaultCenter()
-            nc.postNotificationName("didFetchProjects", object: projects)
+            let nc = NotificationCenter.default
+            nc.post(name: Notification.Name(rawValue: "didFetchProjects"), object: projects)
 
-        }
+        }) 
         task.resume()
     }
 }

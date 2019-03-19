@@ -20,7 +20,7 @@ class Project {
         if let k = json["slug"] as? String {
             self.project_url = "https://www.zooniverse.org/projects/" + k
         }
-        if let s = json["redirect"] as? String where !s.isEmpty {
+        if let s = json["redirect"] as? String, !s.isEmpty {
             self.project_url = s
         }
     }

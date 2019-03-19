@@ -11,7 +11,7 @@ class ProjectListViewController: UIViewController, UITableViewDelegate, UITableV
         self.apiClient = apiClient
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
@@ -30,26 +30,26 @@ class ProjectListViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let nc = NSNotificationCenter.defaultCenter()
-        nc.addObserver(self, selector: #selector(ProjectListViewController.displayProjects), name: "didFetchProjects", object: nil)
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(ProjectListViewController.displayProjects), name: NSNotification.Name(rawValue: "didFetchProjects"), object: nil)
 
         apiClient.getProjects()
 
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
 
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(ProjectListViewController.insertNewObject(_:)))
         self.navigationItem.rightBarButtonItem = addButton
         if let split = self.splitViewController {
-            let controllers = split.viewControllers
+            _ = split.viewControllers
         }
     }
 
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
 
-    func displayProjects(notification: NSNotification) {
-        NSOperationQueue.mainQueue().addOperationWithBlock {
+    func displayProjects(_ notification: Notification) {
+        OperationQueue.main.addOperation {
 //            self.projectListView.stopAnimating()
 
             if let projects = notification.object as? [Project] {
@@ -62,27 +62,27 @@ class ProjectListViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
 
-func insertNewObject(sender: AnyObject) {
-    objects.insertObject(sender, atIndex: 0)
-    let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-    projectListView!.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+func insertNewObject(_ sender: AnyObject) {
+    objects.insert(sender, at: 0)
+    let indexPath = IndexPath(row: 0, section: 0)
+    projectListView!.tableView.insertRows(at: [indexPath], with: .automatic)
 }
 
 // MARK: - Table View
 
-func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return objects.count
 }
 
-func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = projectListView!.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = projectListView!.tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
 
     let object = objects[indexPath.row] as! Project
     cell.textLabel!.text = object.title
     return cell
 }
 
-func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     print("You selected cell #\(indexPath.row)!")
 }
 
